@@ -4,13 +4,8 @@ public class Chicken extends Creature {
 
     public static Node next;
 
-   @Override
-    public void act() {
-        // doesn't act
-    }
-
     @Override
-    public void move() {
+    protected Node chooseNextRoom() { // move();
         // randomly moves to a room
         ArrayList<Node> neighbors = currentRoom.getRandomNeighbors();
 
@@ -19,10 +14,9 @@ public class Chicken extends Creature {
         currentRoom.removeCreature(this);
         setRoom(next);
         currentRoom.addCreature(this);
-    }
 
-    @Override
-    public boolean detectPlayerInNextRoom() { return false; }
+        return currentRoom;
+    }
 
     @Override
     public Node getCurrentRoom() { return currentRoom; }

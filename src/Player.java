@@ -14,6 +14,7 @@ public class Player {
     String name, description;
     ArrayList<Item> items;
     Node currentRoom;
+    int playerHP = 100;
 
     public Player(String name, String description) {
         this.name = name;
@@ -25,7 +26,7 @@ public class Player {
         items.add(item);
     }
 
-    public Item removeItem(String name) {
+    public Item removeRandomItem(String name) {
         // remove item and return it
         Item a = new Item(name, description);
         items.remove(name);

@@ -1,6 +1,7 @@
 public class Wumpus extends Creature {
-    @Override
-    public void act() {
 
+    @Override
+    protected Node chooseNextRoom() {
+        return null;
     }
 }
