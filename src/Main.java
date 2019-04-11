@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // build a graph of connected nodes
 
-        /** Text World 2 **/
         Graph g = new Graph();
         g.addNode("hall");
         g.addNode("closet");
@@ -13,13 +11,7 @@ public class Main {
         g.addDirectedEdge("hall", "dungeon");
         g.addUndirectedEdge("hall", "closet");
 
-        Graph.Node current = g.getNode("hall");
-//        Graph.Node n = new Graph.Node("hall");
-//        n.addNeighbor(n);
-
-        /** Text World 1 **/
         Graph.Node root = new Graph.Node("hall");
-//        Graph.Node adjacentRooms = new Graph.Node("bedroom");
 
         root.addNeighbor(new Graph.Node("closet"));
         root.addNeighbor(new Graph.Node("bedroom"));
@@ -32,7 +24,6 @@ public class Main {
         root.getNeighbor("ladder").addNeighbor(new Graph.Node("dungeon"));
         root.getNeighbor("ladder").addNeighbor(new Graph.Node("hidden room"));
         root.getNeighbor("hidden room").addNeighbor(new Graph.Node("hall"));
-
 
         // "game loop" where I get the user input and move the player
         Graph.Node currentRoom = root;
@@ -56,19 +47,16 @@ public class Main {
             if(firstWord.equals("go")) {
                 /* they typed go "<roomname>", go to the room*/
             } else if(firstWord.equals("look")) {
-                /* they type "look", display all neighbors */
                 currentRoom.getNeighborNames();
                 System.out.println(currentRoom.getNeighborNames());
             } else if(firstWord.equals("add")) {
-                /* they typed add room <roomname>, then add a new neighbor to their current room */
                 root.addNeighbor(new Graph.Node(response));
             } else if(firstWord.equals("quit")) {
-                /* they type quit, then quit */
                 return;
             } else {
                 Graph.Node.displayCommands();
-                /* display all the commands they can type so they know what to do*/
             }
+
             Graph.Node nextRoom = currentRoom.getNeighbor(response);
             if(nextRoom == null) {
                 System.out.println("You can't go to " + response + ". Try again.");

@@ -10,19 +10,27 @@ public class PopStars extends Creature {
     public Node chooseNextRoom() {
         return lookforPlayer();
     }
-//    Map<String, Level> findsNeighbors = new HashMap<String, Level>(map.values());
-
-    public static ArrayList<String> findingNeighbor() {
-        ArrayList<String> roomNames = new ArrayList<String>();
-        for (int i = 0; i < roomNames.size() ; i++) {
-            // return room names???
-        }
-
-        return roomNames;
-    }
 
     public Node lookforPlayer() {
+        Node playersRoom = getCurrentRoom().getNeighbor();
+        if(playersRoom.contains(player)){
+            return playersRoom;
+        }
         return null;
+    }
+
+    public Node findingNewNeighbor(Node playersroom) {
+        ArrayList<String> roomNames = new ArrayList<String>();
+        for (int i = 0; i < roomNames.size(); i++) {
+            neighboringRoomToPlayer(playersroom);
+        }
+        return neighboringRoomToPlayer(playersroom);
+    }
+
+    public Node neighboringRoomToPlayer(Node playersRoom ){
+
+        Node roomNextToPlayer = playersRoom.getNeighbor();
+        return roomNextToPlayer;
     }
 
     public void act() {
@@ -31,6 +39,9 @@ public class PopStars extends Creature {
         if(getCurrentRoom().contains( player )) {
             decreasePlayerLifeForce(lifeForce);
         }
+
+        // update popstar's room to neighboring room to player's
+        Node PopStarsRoom = neighboringRoomToPlayer(lookforPlayer());
     }
 
     private String decreasePlayerLifeForce(int lifeForce) {
@@ -38,6 +49,4 @@ public class PopStars extends Creature {
         String message = "Player has " + remainingLifeForce + " hp left.";
         return message;
     }
-
-
 }
