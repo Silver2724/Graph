@@ -5,5 +5,8 @@ public class Wumpus extends Creature {
         return null;
     }
 
+    public void act(){
+        // have wumpus move randomly
+    }
 
 }
