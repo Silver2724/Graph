@@ -65,6 +65,8 @@ public class Graph {
         }
 
         public static void displayCommands() {
+            System.out.println("Menu: quit || add (room) || look");
         }
+
     }
 }

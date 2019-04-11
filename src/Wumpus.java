@@ -4,4 +4,6 @@ public class Wumpus extends Creature {
     protected Node chooseNextRoom() {
         return null;
     }
+
+
 }

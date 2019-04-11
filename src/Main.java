@@ -45,19 +45,23 @@ public class Main {
             System.out.println("You are currently in the " + currentRoom.getName());
             System.out.println("You can go to the: " + currentRoom.getNeighborNames());
             // ask player what they want to do
+            System.out.println("Press any letter (only one letter) if you want to see what commands you can do.");
             System.out.println("Type the name of the room you want to go to: ");
             System.out.println("What do you want to do?");
             response = in.nextLine();
             // do that
             String[] words = response.split(" ");
             String firstWord = words[0];
+
             if(firstWord.equals("go")) {
                 /* they typed go "<roomname>", go to the room*/
             } else if(firstWord.equals("look")) {
                 /* they type "look", display all neighbors */
+                currentRoom.getNeighborNames();
                 System.out.println(currentRoom.getNeighborNames());
-            } else if(firstWord.equals("add room")) {
+            } else if(firstWord.equals("add")) {
                 /* they typed add room <roomname>, then add a new neighbor to their current room */
+                root.addNeighbor(new Graph.Node(response));
             } else if(firstWord.equals("quit")) {
                 /* they type quit, then quit */
                 return;

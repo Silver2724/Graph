@@ -96,4 +96,10 @@ public class Node {
         // remove item without returning. True if successful.
         return false;
     }
+
+    public boolean contains(Player player) {
+        if(getNeighbor().contains(player)) return true;
+        return false;
+    }
+
 }
